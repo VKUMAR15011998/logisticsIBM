@@ -30,11 +30,11 @@ sap.ui.define([
                 });
             },
     
-            onBeforeRebindTable: function(oSource){
-                var binding = oSource.getParameter("bindingParams");
-                var oFilter = new sap.ui.model.Filter("Lrf_No", sap.ui.model.FilterOperator.NotContains, "Temp-");
-                binding.filters.push(oFilter);
-            } ,
+            // onBeforeRebindTable: function(oSource){
+            //     var binding = oSource.getParameter("bindingParams");
+            //     var oFilter = new sap.ui.model.Filter("Lrf_No", sap.ui.model.FilterOperator.NotContains, "Temp-");
+            //     binding.filters.push(oFilter);
+            // } ,
             onSelectAssignMPL: function (oEvent) {
 
                 if (!this._DialogEmployeesave4) {

@@ -7,9 +7,9 @@ modules:
     type: nodejs
     path: gen/srv
     requires:
-      - name: Logistics1-db
+      - name: logisticsibmcap
       - name: Logistics1-destination-service
-      - name: Logistics1-auth
+      - name: logisticsTest-auth
     provides:
       - name: srv-api
         properties:
@@ -49,9 +49,11 @@ modules:
     path: logistics1-approuter
     requires:
       - name: Logistics1_html_repo_runtime
+      - name: logisticsTest-auth
     parameters:
       disk-quota: 256M
       memory: 256M
+      keep-existing-routes: true
 
   - name: Logistics1-db-deployer
     type: hdb
@@ -59,9 +61,9 @@ modules:
     parameters:
       buildpack: nodejs_buildpack
     requires:
-      - name: Logistics1-db
+      - name: logisticsibmcap
 resources:
-  - name: Logistics1-db
+  - name: logisticsibmcap
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
@@ -95,14 +97,14 @@ resources:
     parameters:
       service: html5-apps-repo
       service-plan: app-runtime
-  - name: Logistics1-auth
+  - name: logisticsTest-auth
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
       service-plan: application
       path: ./xs-security.json
       config:
-        xsappname: Logistics1-${org}-${space}
+        xsappname: logisticsxsapp2
         tenant-mode: dedicated
 parameters:
   deploy_mode: html5-repo
